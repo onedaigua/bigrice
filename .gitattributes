@@ -1,0 +1,14 @@
+* text=auto eol=lf
+
+*.apk binary
+*.idsig binary
+*.apk.idsig binary
+*.tar binary
+*.zip binary
+*.gz binary
+*.jar binary
+*.png binary
+*.jpg binary
+*.gif binary
+*.so* binary
+*.keystore binary

@@ -1,0 +1,16 @@
+# 构建中间产物（本仓库不含，重新构建后也不要提交）
+**/build/
+**/_work/
+_arch_probe/
+*.class
+*.idsig
+*.apk
+*.apk.idsig
+javac.log
+javac.err
+
+# 运行时 / 依赖 / 系统文件
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

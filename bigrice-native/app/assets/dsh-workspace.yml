@@ -1,0 +1,14 @@
+# bigrice 的 profile 补丁：把 dsh 的“文档目录”钉到 App 自己的工作区。
+#
+# dsh 首启会自动建一个默认工作区：<Documents>/deepseek-harness/default-workspace，
+# 其中 Documents 走系统查找（darwin=osascript、win32=PowerShell、linux=xdg-user-dir）。
+# Node 在 Android 上把 process.platform 报成 "android"，那条 switch 没有对应分支，
+# 于是抛 “system Documents directory is unavailable on android”，界面就只剩
+# “无法创建默认工作区，请通过‘选择工作区’选择文件夹”。
+#
+# 这里用 workspace-controller 自己的 documentsDirectory 配置绕开系统查找：
+# 路径由外壳进程通过 BIGRICE_DOCUMENTS 传进来（App 内部工作区，一定有权限），
+# 默认工作区因此落在 <工作区>/deepseek-harness/default-workspace，首启即建好。
+- id: workspace-controller
+  config:
+    documentsDirectory: !!js process.env.BIGRICE_DOCUMENTS
